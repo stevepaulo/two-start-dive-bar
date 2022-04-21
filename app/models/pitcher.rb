@@ -40,6 +40,11 @@ class Pitcher < ApplicationRecord
     true
   end
 
+  def self.main
+    Pitcher.ingest
+    Pitcher.generate_output
+  end
+
   def tier
     return 0 if value.to_f > 24.99
     return 2 if value.to_f < 10.00
