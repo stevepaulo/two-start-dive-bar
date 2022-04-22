@@ -24,7 +24,7 @@ class Pitcher < ApplicationRecord
     ]
 
     Pitcher.all.each do |p|
-      tables[p.tier] = "#{tables[p.tier]}<tr><td>#{p.name}, #{p.team}</td><td>#{p.opp1}</td><td>#{p.opp2}</td></tr>"
+      tables[p.tier] = "#{tables[p.tier]}<tr#{" style='font-weight: bold;'" if p.highlight?}><td>#{p.name}, #{p.team}</td><td>#{p.opp1}</td><td>#{p.opp2}</td></tr>"
     end
 
     tables.each_with_index do |str, idx|
@@ -49,6 +49,19 @@ class Pitcher < ApplicationRecord
     return 0 if value.to_f > 24.99
     return 2 if value.to_f < 10.00
     1
+  end
+
+  def highlight?
+    case self.tier
+    when 0
+      value.to_f > 39.99 ? true : false
+    when 1
+      value.to_f > 19.99 ? true : false
+    when 2
+      value.to_f < 0.00 ? true : false
+    else
+      false
+    end
   end
 
   def val
