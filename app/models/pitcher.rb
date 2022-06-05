@@ -1,6 +1,12 @@
 require "csv"
 
 class Pitcher < ApplicationRecord
+  TIER_1_MIN = 20.00
+  TIER_3_MAX = 7.50
+  TIER_1_HL_MIN = 30.00
+  TIER_2_HL_MIN = 15.00
+  TIER_3_HL_MAX = 0.00
+
   def self.ingest
     Pitcher.destroy_all
 
@@ -46,19 +52,19 @@ class Pitcher < ApplicationRecord
   end
 
   def tier
-    return 0 if value.to_f > 24.99
-    return 2 if value.to_f < 10.00
+    return 0 if value.to_f >= TIER_1_MIN
+    return 2 if value.to_f < TIER_3_MAX
     1
   end
 
   def highlight?
     case self.tier
     when 0
-      value.to_f > 39.99 ? true : false
+      value.to_f >= TIER_1_HL_MIN ? true : false
     when 1
-      value.to_f > 19.99 ? true : false
+      value.to_f >= TIER_2_HL_MIN ? true : false
     when 2
-      value.to_f < 0.00 ? true : false
+      value.to_f < TIER_3_HL_MAX ? true : false
     else
       false
     end
