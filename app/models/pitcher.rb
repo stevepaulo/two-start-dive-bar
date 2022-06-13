@@ -24,9 +24,9 @@ class Pitcher < ApplicationRecord
 
   def self.generate_output
     tables = [
-      "<table style='width: 100%;'><thead><tr><th style='width:40%'>Pitcher</th><th style='width:30%'>First Start</th><th style='width:30%'>Second Start</th></tr></thead><tbody>",
-      "<table style='width: 100%;'><thead><tr><th style='width:40%'>Pitcher</th><th style='width:30%'>First Start</th><th style='width:30%'>Second Start</th></tr></thead><tbody>",
-      "<table style='width: 100%;'><thead><tr><th style='width:40%'>Pitcher</th><th style='width:30%'>First Start</th><th style='width:30%'>Second Start</th></tr></thead><tbody>",
+      "<h2>The Top Shelf</h2>\n\n<table style='width: 100%;'><thead><tr><th style='width:40%'>Pitcher</th><th style='width:30%'>First Start</th><th style='width:30%'>Second Start</th></tr></thead><tbody>",
+      "<h2>The Well</h2>\n\n<table style='width: 100%;'><thead><tr><th style='width:40%'>Pitcher</th><th style='width:30%'>First Start</th><th style='width:30%'>Second Start</th></tr></thead><tbody>",
+      "<h2>The Bar Mat</h2>\n\n<table style='width: 100%;'><thead><tr><th style='width:40%'>Pitcher</th><th style='width:30%'>First Start</th><th style='width:30%'>Second Start</th></tr></thead><tbody>",
     ]
 
     Pitcher.all.each do |p|
@@ -34,11 +34,17 @@ class Pitcher < ApplicationRecord
     end
 
     tables.each_with_index do |str, idx|
-      tables[idx] = "#{tables[idx]}</tbody></table>"
+      tables[idx] = "#{tables[idx]}</tbody></table>\n\n<h3>Notes</h3>\n<ul>\n<li></li>\n</ul>\n\n&nbsp;"
     end
 
+    puts "\n\n"
+    puts "Intro."
+    puts "\n"
+    puts "&nbsp;"
+    puts "\n"
+    puts "<em>The bold pitchers below are the most extreme version of each section. The best of the Top Shelf, the safest of the Well, the worst of the Bar Mat.</em>"
+
     tables.each do |table|
-      puts "\n"
       puts table
       puts "\n"
     end
