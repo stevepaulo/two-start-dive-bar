@@ -38,6 +38,8 @@ class Pitcher < ApplicationRecord
     end
 
     puts "\n\n"
+    puts "--------------- BEGIN OUTPUT ---------------"
+    puts "\n\n"
     puts "Intro."
     puts "\n"
     puts "&nbsp;"
@@ -48,11 +50,14 @@ class Pitcher < ApplicationRecord
       puts table
       puts "\n"
     end
+    puts "\n"
+    puts "---------------- END OUTPUT ----------------"
+    puts "\n\n"
 
     true
   end
 
-  def self.main
+  def self.call
     Pitcher.ingest
     Pitcher.generate_output
   end
