@@ -44,8 +44,8 @@ class Pitcher < ApplicationRecord
     puts "\n"
     puts "&nbsp;"
     puts "\n"
+    puts "<p><em>Pitchers' projected starts for the next week are sourced from Rudy Gamble's <a href='https://razzball.com/streamers-nextweek/'>Streamonator</a> as of the update at XX:XXam Eastern.</em></p>"
     puts "<p><em>The bold pitchers below are the most extreme version of each section. The best of the Top Shelf, the safest of the Well, the worst of the Bar Mat.</em></p>"
-    puts "<p><em>Pitchers' projected starts for the next week are sourced from Rudy Gamble's <a href='https://razzball.com/streamers-nextweek/'>Streamonator</a> as of the update at XX:XXam Eastern</em></p>"
 
     tables.each do |table|
       puts table
